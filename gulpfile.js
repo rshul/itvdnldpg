@@ -47,23 +47,23 @@ gulp.task('sprite', function (cb) {
   spriteData.css.pipe(gulp.dest('source/styles/global/'));
   cb();
 });
-
+/*-----------------Delete----------------------*/
 gulp.task('clean', function del(cb) {
 	return rimraf('build', cb);
 });
-
+/*---------------Copy images--------------------*/
 gulp.task('copy:images', function() {
 	return gulp.src('./source/images/**/*.*')
 	.pipe(gulp.dest('build/images'));
 });
-
+/*----------------Copy fonts--------------------*/
 gulp.task('copy:fonts', function() {
 	return gulp.src('./source/fonts/**/*.*')
 	.pipe(gulp.dest('build/fonts'));
 });
-
+/*----------------Copy--------------------------*/
 gulp.task('copy', gulp.parallel('copy:fonts', 'copy:images'));
-
+/*---------------Watchers-----------------------*/
 gulp.task('watch', function() {
 	gulp.watch('source/template/**/*.pug', gulp.series('template:compile'));
 	gulp.watch('source/styles/**/*.scss', gulp.series('styles:compile'));
