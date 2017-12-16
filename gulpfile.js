@@ -6,6 +6,7 @@ const spritesmith = require('gulp.spritesmith');
 const rimraf = require('rimraf');
 const rename = require('gulp-rename');
 
+/* --------------Server--------------*/
 gulp.task('server', function() {
 	browserSync.init({
 		server: {
@@ -13,10 +14,11 @@ gulp.task('server', function() {
 			baseDir: "build"
 		}
 	});
+	
+	gulp.watch('build/**/*').on('change', browserSync.reload);
 });
 
-gulp.watch('build/**/*').on('change', browserSync.reload);
-
+/*--------------Pug compile------------------------*/
 gulp.task('template:compile', function buildHTML() {
   return gulp.src('source/template/index.pug')
   .pipe(pug({
@@ -25,15 +27,17 @@ gulp.task('template:compile', function buildHTML() {
   .pipe(gulp.dest("build"));
 });
 
+/*-------------------Style compile-------------------*/
 gulp.task('styles:compile', function () {
-  return gulp.src('source/styles/global/main.scss')
+  return gulp.src('source/styles/main.scss')
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(rename('main.min.css'))
     .pipe(gulp.dest('build/css'));
 });
-
+/*--------------Sprite-----------------------*/
 gulp.task('sprite', function (cb) {
-  var spriteData = gulp.src('source/images/icons/*.png').pipe(spritesmith({
+  var spriteData = gulp.src('source/images/icons/*.png')
+  .pipe(spritesmith({
     imgName: 'sprite.png',
     imgPath: '../images/sprite.png',
     cssName: 'sprite.scss'
