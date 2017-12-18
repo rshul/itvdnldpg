@@ -13,4 +13,18 @@
 			background-color: lighten(#de2b24, 7%);
 		}
 	}
+
+	&--yellow {
+		background-color: orange;
+		color: #fff;
+		transition: 0.3s;
+
+		&:hover {
+			background-color: lighten(orange, 7%);
+		}
+	}
+
+	&--text-uppercase {
+		text-transform: uppercase;
+	}
 }
