@@ -19,6 +19,35 @@
 		form.classList.add('is-hidden');
 	};
 
+	me.isValid = function() {
+
+		if (!me.isAllCompleted(document.querySelectorAll('[data-valid="required"]'))){
+			console.log("fields required");
+			return false;
+		} else if (!jsvalidation.isEmail(document.querySelector('[data-email]').value)) {
+			console.log('wrong email');
+			return false;
+		} else if (!jsvalidation.isNumber(document.querySelector('[data-number]').value)) {
+			console.log('wrong number');
+			return false;
+		}
+
+		return true;
+	}
+
+	me.isAllCompleted = function(data) {
+		var result = true;
+
+		for(var i = 0; i < data.length; i++) {
+			if(!jsvalidation.isNotEmpty(data[i].value)) {
+				result = false;
+				break;
+			}
+		}
+
+		return result;
+	}
+
 	window.jsform = me;
 
 }());

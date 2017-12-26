@@ -12,8 +12,8 @@ section.form-section
 				.form__text.
 					 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, aliquam iusto perferendis sit pariatur sapiente mollitia voluptatem, atque dicta et! Quod sunt delectus, suscipit. Aspernatur enim saepe quisquam neque quidem!
 				.form__fields
-					input.form__input(type="text" placeholder="Your name")
-					input.form__input(type="text" placeholder="Contact Number")
-					input.form__input(type="text" placeholder="Contact name")
+					input.form__input(type="text" placeholder="Your name" data-valid="required")
+					input.form__input(type="email" placeholder="Email" data-valid="required" data-email)
+					input.form__input(type="text" placeholder="Contact Number" data-valid="required" data-number)
 
 				button(type="submit").button.button--text-uppercase.button--red Submit now
